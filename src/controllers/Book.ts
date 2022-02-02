@@ -10,7 +10,6 @@ const createBook = (req: Request, res: Response, next: NextFunction) => {
     author,
     title,
   });
-
   return book
     .save()
     .then((result) => res.status(201).json({
@@ -23,6 +22,7 @@ const createBook = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const getAllBooks = (req: Request, res: Response, next: NextFunction) => {
+  const { author, title } = req.body;
   Book.find()
     .exec()
     .then((books) => res.status(200).json({
@@ -33,6 +33,7 @@ const getAllBooks = (req: Request, res: Response, next: NextFunction) => {
       message: error.message,
       error,
     }));
+
 };
 
 export default { createBook, getAllBooks };

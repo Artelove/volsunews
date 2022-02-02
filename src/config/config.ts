@@ -13,8 +13,9 @@ const MONGO_OPTIONS = {
 
 const MONGO_USERNAME = 'user';
 const MONGO_PASSWORD = 'pass';
-const MONGO_HOST = 'localhost:27017';
+const MONGO_HOST = '127.0.0.1:27017';
 const MONGO_DATABASE = 'volsunews';
+
 
 const MONGO = {
   host: MONGO_HOST,
@@ -24,7 +25,7 @@ const MONGO = {
   url: `mongodb://${MONGO_HOST}/${MONGO_DATABASE}`,
 };
 
-const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'localhost';
+const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || '127.0.0.1';
 const SERVER_PORT = process.env.SERVER_PORT || 3000;
 
 const SERVER = {

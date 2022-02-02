@@ -4,3 +4,8 @@ export default interface IBook extends Document {
   title: string;
   author: string;
 }
+/*
+  title: string;
+  author: string;
+
+ */

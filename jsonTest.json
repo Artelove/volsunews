@@ -1,0 +1,42 @@
+{
+  "author": "Artelove",
+  "title": "TestNew",
+  "publicationDate": "now",
+  "eventDates": "null",
+  "filterTags": [
+    "test",
+    "server",
+    "post"
+  ],
+  "auditoryTags": ["development"],
+  "interaction": {
+    "button": {
+      "type": "check",
+      "title": "Учавствую в тестировнии",
+      "text": "Хай, этот json хочет, чтобы его обработали на сервере и занесли в БД))",
+      "clicksNumber": 1,
+      "clickAction": "checkIn"
+    },
+    "survey":{
+      "title": "Сколько вариантов взаимодействия может быть?",
+      "variants": [
+        "Вообще они создаюстя динамически и сколько угодно",
+        "Не более 2-3 на одну новость",
+        "Только одна, лол, чтобы не был массивов"
+      ]
+    },
+    "feedback":{
+      "likes": 0,
+      "views": 0,
+      "comments": {
+        "text": "Показатель views отображает количество попыток отправить данные коректно",
+        "likes": 0
+      }
+    }
+  },
+  "techInfo": {
+    "createDate": "In current moment",
+    "type": "new-action",
+    "status": "draft"
+  }
+}

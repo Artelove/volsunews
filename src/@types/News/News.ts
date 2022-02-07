@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 export default interface INews extends Document {
   author: { type: String, required: true }, //Author of current news
   title: { type: String, required: true }, //Title in hedder of news
+  text: {type: String, required:true}, // Inner text of news
   publicationDate: { type: Date, required: true}, //Date, when news is publicated
   eventDates: {type: Array<Date>, required: false}, //Dates of Date, when event shoud go on
   filterTags: {type: Array<String>, required: true}, //Tags for search and filter for different accounts, with down-up struct (The most down contain all of the top of them)
@@ -13,6 +14,11 @@ export default interface INews extends Document {
       path:  { type: String, required: true }
   }
   */
+  techInfo: {
+    createDate: {type: String, required:true},
+    type: {type: String, required:true},
+    status: ["draft","pendingVerification","pendingPublicate","publicated","deleted"]
+  }
   interaction: {
     button:{
       type: {type: String, required: true}, //Depends about clickAction
@@ -34,10 +40,5 @@ export default interface INews extends Document {
         likes: {type: Number, required:true}
       }
     }
-  },
-  techInfo: {
-    createDate: {type: String, required:true},
-    type: {type: String, required:true},
-    status: ["draft","pendingVerification","pendingPublicate","publicated","deleted"]
   }
 }

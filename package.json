@@ -6,7 +6,7 @@
     "start": "tsc && node dist/app.js",
     "serve": "nodemon"
   },
-  "author": "",
+  "author": "web-otdel",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",

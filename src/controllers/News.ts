@@ -10,6 +10,8 @@ import modelNews from '../@types/News/News';
  * @param req contain in `req.body` fields for create new News as json-file :
  *
  *
+ * @param res
+ * @param next
  */
 
 const createNews = (req: Request, res: Response, next: NextFunction) => {
@@ -70,25 +72,28 @@ function NonNullFieldsObcjectCompare(obj1, obj2) {
     }
     return true;
 };
-/** НАДО ЗАПОЛНИТЬ
- *
- * @param req
- *
- *
+/**
+ * Принимает Get-параметры из url `req.query`
+ * Отдает массив objects тип modelNews с необходимой пагинацией
+ * @string author, title, text, publicationDate, eventDates
+ * @string[] filterTags, auditoryTags
+ * @object interaction, techInfo
+ * @number page, countNews
+ * @param req contain fields as json
+ * @param res contain response (code, body)
+ * @param next
  */
 const getNews = (req: Request, res: Response, next: NextFunction) => {
-    const {author, title, text, eventDates, publicationDate, filterTags, auditoryTags, interaction,
-        techInfo, page, countNews} = req.query;
     const tmpNew = req.query
     const pagination:number = (Number(page)-1)*Number(countNews);
     console.log(pagination);
     News.find({},function (error, docs:modelNews[]) {
-        var arrayOfNews:Array<modelNews> = [];
+        let arrayOfNews:Array<modelNews> = [] ;
         docs.forEach(function (value) {
             if(NonNullFieldsObcjectCompare(tmpNew,value.toJSON()))
                 arrayOfNews.push(value);
         });
-        if(arrayOfNews!==null) {
+        if(arrayOfNews.length!=0) {``
             if(pagination!=0)
             arrayOfNews = arrayOfNews.slice(pagination, pagination + Number(countNews));
 
@@ -106,6 +111,8 @@ const getNews = (req: Request, res: Response, next: NextFunction) => {
 /** Takes news by id and variables[] to correct these fields and save to DB
  * @param req contain in `req.body` 2 fields as json-file:
  *
+ * @param res
+ * @param next
  * @id - id field in the database for finding the record
  * @variables[] - Array of fields with values to be changed
  */
@@ -124,12 +131,14 @@ const putNews = (req: Request, res: Response, next: NextFunction) => {
             .catch((error) => res.status(500).json({
                 message: error.message,
                 error,
-            }));;
+            }));
     });
 };
 /** Take ids[] from json and delete records from DB
  * Algorithm: Take one news by id, delete one news, go to next id
  * @param req contain 1 field in json-file:
+ * @param res
+ * @param next
  * @ids - Array of id field in the database for finding the record
  */
 const deleteNews = (req: Request, res: Response, next: NextFunction) => {

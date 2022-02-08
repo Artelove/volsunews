@@ -84,7 +84,8 @@ function NonNullFieldsObcjectCompare(obj1, obj2) {
  * @param next
  */
 const getNews = (req: Request, res: Response, next: NextFunction) => {
-    const tmpNew = req.query
+    const {page, countNews} = req.query;
+    const tmpNew = req.query //tmpNews - not full :modelNew
     const pagination:number = (Number(page)-1)*Number(countNews);
     console.log(pagination);
     News.find({},function (error, docs:modelNews[]) {

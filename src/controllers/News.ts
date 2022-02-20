@@ -58,8 +58,9 @@ function NotNullFieldsObjectCompare(obj1, obj2) {
                     }
             }
         }
-        return true;
+
     }
+    return true;
 }
 
 /**
@@ -76,15 +77,21 @@ const getNews = (req: Request, res: Response) => {
     const {page, countNews} = req.query;
     const tmpNew = req.query //tmpNews - not full :modelNew
     const pagination:number = (Number(page)-1)*Number(countNews);
-    console.log(pagination);
-    News.find({},function (error, docs:modelNews[]) {
+    News.find({},function (error, news:modelNews[]) {
+        // If req.query is empty -> return all news
+        if (Object.values(req.query).length == 0) {
+            res.status(200).json({
+                news,
+                count: news.length,
+            });
+        }
         let arrayOfNews:Array<modelNews> = [] ;
-        docs.forEach(function (value) {
+        news.forEach(function (value) {
             if(NotNullFieldsObjectCompare(tmpNew,value.toJSON()))
                 arrayOfNews.push(value);
         });
         if(arrayOfNews.length!=0) {
-            if(pagination!=0)
+            if(pagination !== 0)
             arrayOfNews = arrayOfNews.slice(pagination, pagination + Number(countNews));
 
             res.status(200).json({
@@ -93,8 +100,7 @@ const getNews = (req: Request, res: Response) => {
             });
         }else{
             res.status(500).json({
-                message: error.message,
-                error,
+                message: "The request for the specified filtering did not return results",
             });
         }});
 };
@@ -137,15 +143,15 @@ function NotNullFieldsObjectPut(obj1, obj2) {
  */
 const putNews = (req: Request, res: Response) => {
     let {id, variables} = req.body;
-    News.find({_id: id},function (error, docs:modelNews[]) {
-        let changedDoc = NotNullFieldsObjectPut(variables,docs[0].toJSON());
+    News.find({_id: id},function (error, news:modelNews[]) {
+        let changedDoc = NotNullFieldsObjectPut(variables,news[0].toJSON());
         for (let v in changedDoc) {
-            docs[0][v] = changedDoc[v];
+            news[0][v] = changedDoc[v];
         }
-        docs[0].save().then(() => res.status(200).json({
-            docs,
+        news[0].save().then(() => res.status(200).json({
+            news,
             message: "updated",
-            id: docs[0]._id,
+            id: news[0]._id,
         }))
             .catch((error) => res.status(500).json({
                 message: error.message,

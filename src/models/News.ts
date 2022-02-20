@@ -12,7 +12,7 @@ const NewsSchema: Schema = new Schema(
         filterTags: {type: Array(String), required: true, default: ["All"]}, //Tags for search and filter for different accounts, with down-up struct (The most down contain all of the top of them)
         auditoryTags: {type: Array(String), required: true, default: ["All"]}, //Tags for views for different accounts groups, with up-down struct (Current tag contain all of the down)
         techInfo: {
-            createDate: {type: String, required:true},
+            createDate: {type: Date, required:true},
             type: {type: String, required:true},
             status: ["draft","pendingVerification","pendingPublicate","publicated","deleted"]
         },

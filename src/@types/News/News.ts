@@ -15,7 +15,7 @@ export default interface INews extends Document {
   }
   */
   techInfo: {
-    createDate: {type: String, required:true},
+    createDate: {type: Date, required:true},
     type: {type: String, required:true},
     status: ["draft","pendingVerification","pendingPublicate","publicated","deleted"]
   }

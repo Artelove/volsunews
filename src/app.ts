@@ -18,6 +18,7 @@ mongoose
     logging.info(NAMESPACE, 'Mongo Connected');
   })
   .catch((error) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     logging.error(NAMESPACE, error.message, error);
   });
 

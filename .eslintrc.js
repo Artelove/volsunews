@@ -38,8 +38,8 @@ module.exports = {
       parserOptions: {
         project: ['./tsconfig.json'], // Specify it only for TypeScript files
         ecmaFeatures: {
-            "jsx": true
-        }
+          'jsx': true,
+        },
       },
     },
   ],

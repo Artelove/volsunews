@@ -6,7 +6,7 @@ import logging from './config/logging';
 import config from './config/config';
 
 // Routes
-import bookRoutes from './routes/Book';
+import bookRoutes from './routes/News';
 
 const NAMESPACE = 'Server';
 const router = express();
@@ -52,7 +52,7 @@ router.use((req, res, next) => {
 });
 
 /** Routes go here */
-router.use('/api/books', bookRoutes);
+router.use('/api/news', bookRoutes);
 
 /** Error handling */
 router.use((req, res) => {

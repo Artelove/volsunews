@@ -13,7 +13,7 @@ const MONGO_OPTIONS = {
 
 const MONGO_USERNAME = 'user';
 const MONGO_PASSWORD = 'pass';
-const MONGO_HOST = 'localhost:27017';
+const MONGO_HOST = '127.0.0.1:27017';
 const MONGO_DATABASE = 'volsunews';
 
 const MONGO = {

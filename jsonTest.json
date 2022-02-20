@@ -1,0 +1,35 @@
+{
+  "id" : "6200bd5007cdc4ea14545039",
+  "variables": {
+    "author": "Put",
+    "title": "Put",
+    "filterTags": [
+      "test",
+      "server",
+      "post"
+    ],
+    "auditoryTags": ["development"],
+    "interaction": {
+      "button": {
+        "type": "1check"
+      },
+      "survey":{
+        "title": "Сколько вариантов взаимодействия может быть?",
+        "variants": [
+          "Вообще они создаюстя динамически и сколько угодно",
+          "Только одна, лол, чтобы не был массивов"
+        ]
+      },
+      "feedback":{
+        "likes": 322,
+        "comments": {
+          "text": "Показатель views отображает количество попыток отправить данные коректно",
+          "likes": 0
+        }
+      }
+    },
+    "techInfo": {
+      "status": ["draft"]
+    }
+  }
+}

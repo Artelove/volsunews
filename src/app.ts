@@ -4,9 +4,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import logging from './config/logging';
 import config from './config/config';
+import formData from 'express-form-data';
 
 // Routes
 import bookRoutes from './routes/News';
+import * as os from "os";
 
 const NAMESPACE = 'Server';
 const router = express();
@@ -38,6 +40,10 @@ router.use((req, res, next) => {
 /** Parse the body of the request */
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
+router.use(formData.parse({
+  uploadDir: os.tmpdir(),
+  autoClean: true
+}));
 
 /** Rules of our API */
 router.use((req, res, next) => {

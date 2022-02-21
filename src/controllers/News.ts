@@ -84,6 +84,7 @@ const getNews = (req: Request, res: Response) => {
                 news,
                 count: news.length,
             });
+            return;
         }
         let arrayOfNews:Array<modelNews> = [] ;
         news.forEach(function (value) {
